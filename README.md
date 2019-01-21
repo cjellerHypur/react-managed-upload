@@ -53,7 +53,7 @@ export default class App extends Component {
   render () {
     const { time } = this.state;
     return (
-      <div style={{marginLeft: '100px'}}>
+      <div>
         <TimeSelection value={time} onTimeChange={(time) => this.setState({time})} />
       </div>
     )
