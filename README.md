@@ -2,7 +2,7 @@
 
 > A simple time picker based on [react-dates](https://github.com/airbnb/react-dates) and [react-timepicki](https://github.com/senthilraj/react-timepicki)
 
-[![NPM](https://img.shields.io/npm/v/react-time-selection.svg)](https://www.npmjs.com/package/react-time-selection) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-airbnb-brightgreen.svg)](https://standardjs.com) [![License][license-image]][license-url]
+[![NPM](https://img.shields.io/npm/v/react-time-selection.svg)](https://www.npmjs.com/package/react-time-selection) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-airbnb-brightgreen.svg)](https://standardjs.com)
 
 ## Install
 
