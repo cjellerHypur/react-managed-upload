@@ -7,7 +7,6 @@ Enzyme.configure({ adapter: new Adapter() });
 
 describe('React Time Selection Component', () => {
     /* 12 HOUR TIME TESTS */
-
     test('renders', () => {
         const wrapper = shallow(<ReactTimeSelection />);
         expect(wrapper.exists()).toBe(true);
@@ -249,7 +248,6 @@ describe('React Time Selection Component', () => {
     });
 
     /* MILITARY TIME TESTS */
-
     test('renders with military time (No #meridian input)', () => {
         const wrapper = shallow(<ReactTimeSelection isMilitaryTime />);
         wrapper.find('input').simulate('click');
