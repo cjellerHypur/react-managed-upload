@@ -1,6 +1,6 @@
 {
   "name": "react-time-selection",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A simple time picker based on react-dates and react-timepicki",
   "author": "cjellerHypur",
   "license": "MIT",
