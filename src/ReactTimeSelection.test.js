@@ -60,7 +60,7 @@ describe('React Time Selection Component', () => {
         if (currentMinutes < 10) {
             minString = `0${currentMinutes}`;
         }
-        const expectedString = `${hourString} : ${minString} ${meridian}`;
+        const expectedString = `${hourString}:${minString} ${meridian}`;
         expect(inputValue).toBe(expectedString);
     });
 
@@ -281,7 +281,7 @@ describe('React Time Selection Component', () => {
         if (currentMinutes < 10) {
             minString = `0${currentMinutes}`;
         }
-        const expectedString = `${hourString} : ${minString}`;
+        const expectedString = `${hourString}:${minString}`;
         expect(inputValue).toBe(expectedString);
     });
 

@@ -65,14 +65,14 @@ class ReactTimeSelection extends Component {
         const { isMilitaryTime, onTimeChange } = this.props;
         const timeObject = {};
         if (!isMilitaryTime) {
-            setTime = `${`0${currentHours}`.slice(-2)} : ${`0${currentMinutes}`.slice(
+            setTime = `${`0${currentHours}`.slice(-2)}:${`0${currentMinutes}`.slice(
                 -2,
             )} ${meridian}`;
             timeObject.hour = `0${currentHours}`.slice(-2);
             timeObject.mins = `0${currentMinutes}`.slice(-2);
             timeObject.mer = meridian;
         } else {
-            setTime = `${`0${currentHours}`.slice(-2)} : ${`0${currentMinutes}`.slice(-2)}`;
+            setTime = `${`0${currentHours}`.slice(-2)}:${`0${currentMinutes}`.slice(-2)}`;
             timeObject.hour = `0${currentHours}`.slice(-2);
             timeObject.mins = `0${currentMinutes}`.slice(-2);
         }
