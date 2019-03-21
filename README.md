@@ -1,4 +1,4 @@
-# react-time-selection
+# react-managed-upload
 
 > A simple managed upload component based on [filepond](https://github.com/pqina/filepond) && [react-filepond](https://github.com/pqina/react-filepond). The main change being the link between the server files and the UI. In addition, this library requires manual configuration of upload, download, and remove functions rather than trying to create a "one size fits all" generic server call. Because of this, you can use any HTTP library of your choice. We recommend [axios](https://github.com/axios/axios)!
 
