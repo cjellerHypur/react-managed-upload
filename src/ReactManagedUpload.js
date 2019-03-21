@@ -191,6 +191,7 @@ class ReactManagedUpload extends Component {
                                     reupload={this.reupload}
                                     download={this.downloadFile}
                                     remove={this.removeFile}
+                                    readOnly={readOnly}
                                 />
                             ))}
                         </ul>

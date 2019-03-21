@@ -21,7 +21,7 @@ function bytesToSize(bytes) {
 }
 
 const ManagedFile = ({
-    localFile, abort, reupload, download, remove,
+    localFile, abort, reupload, download, remove, readOnly,
 }) => (
     <li>
         <div
@@ -64,16 +64,18 @@ const ManagedFile = ({
                             >
                                 <FontAwesomeIcon icon={faArrowDown} />
                             </button>
-                            <button
-                                className="fileControlButton"
-                                type="button"
-                                onClick={() => remove(localFile)}
-                            >
-                                <FontAwesomeIcon icon={faTrash} />
-                            </button>
+                            {!readOnly && (
+                                <button
+                                    className="fileControlButton"
+                                    type="button"
+                                    onClick={() => remove(localFile)}
+                                >
+                                    <FontAwesomeIcon icon={faTrash} />
+                                </button>
+                            )}
                         </Fragment>
                     )}
-                    {localFile.status === STATUS.UPLOADING && (
+                    {(localFile.status === STATUS.UPLOADING && !readOnly) && (
                         <Fragment>
                             <button className="fileControlButton" disabled type="button">
                                 <FontAwesomeIcon icon={faCircleNotch} spin />
@@ -87,7 +89,7 @@ const ManagedFile = ({
                             </button>
                         </Fragment>
                     )}
-                    {localFile.status === STATUS.FAILED && (
+                    {(localFile.status === STATUS.FAILED && !readOnly) && (
                         <Fragment>
                             <button
                                 className="fileControlButton"
@@ -105,7 +107,7 @@ const ManagedFile = ({
                             </button>
                         </Fragment>
                     )}
-                    {localFile.status === STATUS.CANCELED && (
+                    {(localFile.status === STATUS.CANCELED && !readOnly) && (
                         <Fragment>
                             <button
                                 className="fileControlButton"
@@ -135,6 +137,7 @@ ManagedFile.propTypes = {
     reupload: PropTypes.func.isRequired,
     download: PropTypes.func.isRequired,
     remove: PropTypes.func.isRequired,
+    readOnly: PropTypes.bool.isRequired,
 };
 
 export default ManagedFile;

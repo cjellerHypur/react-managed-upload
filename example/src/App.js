@@ -5,8 +5,20 @@ const CancelToken = axios.CancelToken;
 
 export default class App extends Component {
   state = {
-    files: [],
-    readOnly: false,
+    files: [{
+      fileInfo: {
+        name: 'test.txt',
+        size: 12,
+      },
+      localID: 'file_1553189270561_1',
+      serverInfo: {
+        Hash: '1F471F9200BC81A2360684FA876F57BC',
+        ID: '4454',
+        Value: 'test.txt',
+      },
+      status: 'LOADED',
+    }],
+    readOnly: true,
     allowMultiple: true,
   }
   render () {
@@ -48,7 +60,6 @@ export default class App extends Component {
           }
         }
         download={(localFile) => {
-          console.log(localFile);
           // axios.get(`/files/${localFile.serverInfo.ID}/${localFile.serverInfo.Hash}`);
           window.open(`http://localhost:36596/api/files/${localFile.serverInfo.ID}/${localFile.serverInfo.Hash}`);
         }}
