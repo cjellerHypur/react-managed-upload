@@ -30,6 +30,9 @@ export default class App extends Component {
           files={files}
           readOnly={readOnly}
           allowMultiple={allowMultiple}
+          upload={(localFile, onSuccess, onFailure) => {}}
+          download={(localFile) => {}}
+          remove={(localFile, getFiles) => {}}
         />
       </div>
     );
@@ -39,7 +42,7 @@ export default class App extends Component {
 
 ## Props
 
-```
+```jsx
 files: PropTypes.arrayOf(
   PropTypes.shape({
     status: PropTypes.string,
@@ -72,7 +75,7 @@ The upload prop function runs when the component receives a new file either, and
 
 In axios, aborting the upload hits the catch of the api call. Rather than throwing an error, we check for this before we call the onFailure callback.
 
-```
+```jsx
 upload={(localFile, onSuccess, onFailure) => {
 
   api
@@ -102,7 +105,7 @@ The upload prop function runs when a user clicks on a file to download. It provi
 
 You can access the serverInfo property to provide necessary server information for the request
 
-```
+```jsx
 download={(localFile) => {
   api.get(`/files/${localFile.serverInfo.ID}`);
   window.open(`http://localhost/files/${localFile.serverInfo.ID}`);
@@ -118,14 +121,14 @@ The upload prop function runs when a user clicks on a file to download. It provi
 
 You can access the serverInfo property on the localFile object to provide necessary server information for the request.
 
-```
+```jsx
 remove={(localFile, getFiles) => {
   api
   .delete(`/files/${localFile.serverInfo.ID}`)
   .then(() => {
     // get my state files
     getFiles();
-  })
+  });
 }}
 ```
 
