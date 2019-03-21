@@ -1,0 +1,149 @@
+@import url("https://fonts.googleapis.com/css?family=Roboto");
+
+.upload-wrapper {
+  border-radius: 0.5em;
+  background: #f1f0ef;
+  padding: 10px;
+  font-family: Roboto, "Open Sans", "Helvetica Neue", sans-serif;
+}
+
+.upload-browser {
+  position: absolute;
+  margin: 0;
+  padding: 0;
+  left: 1em;
+  top: 1.75em;
+  width: calc(100% - 2em);
+  opacity: 0;
+  font-size: 0;
+}
+
+.upload-drop-area {
+  right: 0;
+  margin: 0;
+  color: #4f4f4f;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 4.75em;
+}
+
+.upload-drop-label {
+  cursor: default;
+  font-size: 0.875em;
+  font-weight: 400;
+  text-align: center;
+  line-height: 1.5;
+}
+
+.browse-span {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.upload-list-scroller {
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+
+.upload-list {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+  will-change: transform;
+}
+
+.managedFile {
+  position: static;
+  display: flex;
+  height: 100%;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5625em;
+  color: #fff;
+  border-radius: 0.5em;
+  background-color: #64605e;
+  margin-bottom: 3px;
+}
+
+.fileLoadedSuccess {
+  background: #00B06E !important;
+}
+
+.fileLoadedFailure {
+  background: #DB3F2D !important;
+}
+
+.fileInfo .fileName {
+  font-size: 0.75em;
+  line-height: 1.2;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.fileInfo .fileSize {
+  font-size: 0.625em;
+  opacity: 0.5;
+  transition: opacity 0.25s ease-in-out;
+  white-space: nowrap;
+}
+
+.fileHelp {
+  margin-right: 10px;
+}
+
+.fileHelp .fileMessage {
+  font-size: 0.75em;
+  line-height: 1.2;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.fileHelp .fileSubMessage {
+  font-size: 0.625em;
+  opacity: 0.5;
+  transition: opacity 0.25s ease-in-out;
+  white-space: nowrap;
+}
+
+.fileControlsRight {
+  justify-self: flex-end;
+  display: flex;
+}
+
+.fileControlButton {
+  cursor: auto;
+  color: #fff;
+  border-radius: 50%;
+  background-color: rgba(0, 0, 0, 0.5);
+  background-image: none;
+  box-shadow: 0 0 0 0 rgba(255, 255, 255, 0);
+  transition: box-shadow 0.25s ease-in;
+  font-size: 1em;
+  width: 1.625em;
+  height: 1.625em;
+  font-family: inherit;
+  line-height: inherit;
+  margin: 0;
+  margin-right: 5px;
+  padding: 0;
+  border: none;
+  outline: none;
+  will-change: transform, opacity;
+}
+
+.fileControlButton svg {
+  margin-top: 3px;
+}
+
+.fileControlButton:disabled {
+  box-shadow: 0 0 0 0 rgba(255, 255, 255, 0) !important;
+  cursor: progress !important;
+}
+
+.fileControlButton:hover {
+  box-shadow: 0 0 0 0.125em rgba(255, 255, 255, 0.9);
+  cursor: pointer;
+}

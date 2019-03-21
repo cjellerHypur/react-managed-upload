@@ -1,3 +1,3 @@
-import ReactTimeSelection from './ReactTimeSelection';
+import ReactManagedUpload from './ReactManagedUpload';
 
-export default ReactTimeSelection;
+export default ReactManagedUpload;
