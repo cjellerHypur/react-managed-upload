@@ -5,20 +5,8 @@ const CancelToken = axios.CancelToken;
 
 export default class App extends Component {
   state = {
-    files: [{
-      fileInfo: {
-        name: 'test.txt',
-        size: 12,
-      },
-      localID: 'file_1553189270561_1',
-      serverInfo: {
-        Hash: '1F471F9200BC81A2360684FA876F57BC',
-        ID: '4454',
-        Value: 'test.txt',
-      },
-      status: 'LOADED',
-    }],
-    readOnly: true,
+    files: [],
+    readOnly: false,
     allowMultiple: true,
   }
   render () {
@@ -35,9 +23,6 @@ export default class App extends Component {
               headers: {
                 'Accept': 'application/json',
                 'filename' : localFile.file.name,
-                'filetag': 'testtag',
-                'ownerID': '',
-                'formDataId': 40,
               },
               cancelToken: new CancelToken(function executor(c) {
                 // An executor function receives a cancel function as a parameter
@@ -60,15 +45,14 @@ export default class App extends Component {
           }
         }
         download={(localFile) => {
-          // axios.get(`/files/${localFile.serverInfo.ID}/${localFile.serverInfo.Hash}`);
-          window.open(`http://localhost:36596/api/files/${localFile.serverInfo.ID}/${localFile.serverInfo.Hash}`);
+          axios.get(`/files/${localFile.serverInfo.ID}`);
         }}
         remove={(localFile, getFiles) => {
-          axios.delete(`/files/${localFile.serverInfo.ID}/${localFile.serverInfo.Hash}`)
+          axios.delete(`/files/${localFile.serverInfo.ID}`)
           .then(() => {
             const files = getFiles();
             this.setState({files});
-          })
+          });
         }}
         />
       </div>

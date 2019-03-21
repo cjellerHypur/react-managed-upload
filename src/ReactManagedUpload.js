@@ -205,24 +205,25 @@ class ReactManagedUpload extends Component {
 ReactManagedUpload.propTypes = {
     files: PropTypes.arrayOf(PropTypes.shape({
         status: PropTypes.string,
-        source: PropTypes.string,
-        hash: PropTypes.string,
-        serverID: PropTypes.string,
+        serverInfo: PropTypes.object,
         fileInfo: PropTypes.shape({
             name: PropTypes.string,
             size: PropTypes.number,
         }),
         localID: PropTypes.string,
-    })).isRequired,
+    })),
     allowMultiple: PropTypes.bool.isRequired,
     readOnly: PropTypes.bool.isRequired,
-    upload: PropTypes.func.isRequired,
-    download: PropTypes.func.isRequired,
-    remove: PropTypes.func.isRequired,
+    upload: PropTypes.func,
+    download: PropTypes.func,
+    remove: PropTypes.func,
 };
 
-ReactManagedUpload.defaultProps = {};
-
-ReactManagedUpload.defaultProps = {};
+ReactManagedUpload.defaultProps = {
+    files: [],
+    upload: () => {},
+    download: () => {},
+    remove: () => {},
+};
 
 export default ReactManagedUpload;
