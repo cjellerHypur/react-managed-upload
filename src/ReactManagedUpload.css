@@ -18,6 +18,10 @@
   font-size: 0;
 }
 
+.upload-drop-area:focus {
+  outline: none;
+}
+
 .upload-drop-area {
   right: 0;
   margin: 0;

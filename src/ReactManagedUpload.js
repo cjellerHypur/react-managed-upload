@@ -105,11 +105,16 @@ class ReactManagedUpload extends Component {
 
     updateFilesList = (newFiles) => {
         const { files } = this.state;
-        for (let i = 0; i < newFiles.length; i += 1) {
-            files.push(new LocalFile(newFiles[i]));
+        const { allowMultiple } = this.props;
+        if (files.length > 0 && !allowMultiple) {
+            // skip adding a second file
+        } else {
+            for (let i = 0; i < newFiles.length; i += 1) {
+                files.push(new LocalFile(newFiles[i]));
+            }
+            this.setState({ files });
+            this.uploadFiles(files);
         }
-        this.setState({ files });
-        this.uploadFiles(files);
 
         // init file input
         this.fileInput.current.value = '';
@@ -132,7 +137,7 @@ class ReactManagedUpload extends Component {
     getFiles = () => {
         const { files } = this.state;
         return files;
-    }
+    };
 
     removeFile = (localFile) => {
         // remove from input element by clearing value
@@ -171,11 +176,20 @@ class ReactManagedUpload extends Component {
                             handleDrop={this.handleDrop}
                             className="upload-drop-area"
                             onClick={this.dropAreaClickHandler}
+                            allowMultiple={allowMultiple}
                         >
-                            <div className="upload-drop-label">
-                                {'Drag & Drop your files or '}
-                                <span className="browse-span"> Browse</span>
-                            </div>
+                            {allowMultiple && (
+                                <div className="upload-drop-label">
+                                    {'Drag & Drop your files or '}
+                                    <span className="browse-span"> Browse</span>
+                                </div>
+                            )}
+                            {!allowMultiple && (
+                                <div className="upload-drop-label">
+                                    {'Drag & Drop your file or '}
+                                    <span className="browse-span"> Browse</span>
+                                </div>
+                            )}
                         </DragAndDrop>
                     </Fragment>
                 )}
@@ -203,15 +217,17 @@ class ReactManagedUpload extends Component {
 }
 
 ReactManagedUpload.propTypes = {
-    files: PropTypes.arrayOf(PropTypes.shape({
-        status: PropTypes.string,
-        serverInfo: PropTypes.object,
-        fileInfo: PropTypes.shape({
-            name: PropTypes.string,
-            size: PropTypes.number,
+    files: PropTypes.arrayOf(
+        PropTypes.shape({
+            status: PropTypes.string,
+            serverInfo: PropTypes.object,
+            fileInfo: PropTypes.shape({
+                name: PropTypes.string,
+                size: PropTypes.number,
+            }),
+            localID: PropTypes.string,
         }),
-        localID: PropTypes.string,
-    })),
+    ),
     allowMultiple: PropTypes.bool.isRequired,
     readOnly: PropTypes.bool.isRequired,
     upload: PropTypes.func,

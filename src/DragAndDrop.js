@@ -30,11 +30,16 @@ class DragAndDrop extends Component {
     };
 
     handleDragIn = (e) => {
+        const { allowMultiple } = this.props;
         e.preventDefault();
         e.stopPropagation();
         this.dragCounter += 1;
         if (e.dataTransfer.items && e.dataTransfer.items.length > 0) {
-            this.setState({ dragging: true });
+            if (!allowMultiple && e.dataTransfer.files.length > 1) {
+                // error
+            } else {
+                this.setState({ dragging: true });
+            }
         }
     };
 
@@ -48,14 +53,18 @@ class DragAndDrop extends Component {
     };
 
     handleDrop = (e) => {
-        const { handleDrop } = this.props;
+        const { handleDrop, allowMultiple } = this.props;
         e.preventDefault();
         e.stopPropagation();
         this.setState({ dragging: false });
         if (e.dataTransfer.files && e.dataTransfer.files.length > 0) {
-            handleDrop(e.dataTransfer.files);
-            e.dataTransfer.clearData();
-            this.dragCounter = 0;
+            if (!allowMultiple && e.dataTransfer.files.length > 1) {
+                // error
+            } else {
+                handleDrop(e.dataTransfer.files);
+                e.dataTransfer.clearData();
+                this.dragCounter = 0;
+            }
         }
     };
 
@@ -68,6 +77,9 @@ class DragAndDrop extends Component {
                 style={{ position: 'relative' }}
                 onClick={onClick}
                 ref={this.dropRef}
+                onKeyPress={() => {}}
+                role="button"
+                tabIndex={-1}
             >
                 {dragging && (
                     <div
@@ -104,6 +116,9 @@ class DragAndDrop extends Component {
 DragAndDrop.propTypes = {
     handleDrop: PropTypes.func.isRequired,
     children: PropTypes.element.isRequired,
+    className: PropTypes.string.isRequired,
+    onClick: PropTypes.func.isRequired,
+    allowMultiple: PropTypes.bool.isRequired,
 };
 
 export default DragAndDrop;
